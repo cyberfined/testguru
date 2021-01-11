@@ -1,24 +1,12 @@
-# README
+# TestGuru
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Site for creating and passing tests.
 
-Things you may want to cover:
+# Project entities
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. User
+2. Test
+3. Сategory
+4. Question
+5. Answer
+6. Result of passing test (points, right and wrong answers)
