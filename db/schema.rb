@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_15_114355) do
+ActiveRecord::Schema.define(version: 2021_01_15_115050) do
 
   create_table "answers", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "question_id", null: false
-    t.string "statement"
-    t.boolean "is_correct"
+    t.string "statement", null: false
+    t.boolean "is_correct", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["question_id"], name: "index_answers_on_question_id"
@@ -24,14 +24,14 @@ ActiveRecord::Schema.define(version: 2021_01_15_114355) do
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string "title", limit: 30
+    t.string "title", limit: 30, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["title"], name: "index_categories_on_title", unique: true
   end
 
   create_table "levels", force: :cascade do |t|
-    t.string "title", limit: 30
+    t.string "title", limit: 30, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["title"], name: "index_levels_on_title", unique: true
@@ -39,14 +39,14 @@ ActiveRecord::Schema.define(version: 2021_01_15_114355) do
 
   create_table "questions", force: :cascade do |t|
     t.integer "test_id", null: false
-    t.string "statement"
+    t.string "statement", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["test_id"], name: "index_questions_on_test_id"
   end
 
   create_table "tests", force: :cascade do |t|
-    t.string "title", limit: 30
+    t.string "title", limit: 30, null: false
     t.integer "level_id", null: false
     t.integer "category_id", null: false
     t.integer "creator_id", null: false
@@ -58,8 +58,8 @@ ActiveRecord::Schema.define(version: 2021_01_15_114355) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "login", limit: 30
-    t.string "password_digest"
+    t.string "login", limit: 30, null: false
+    t.string "password_digest", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["login"], name: "index_users_on_login", unique: true
