@@ -55,8 +55,8 @@ ActiveRecord::Schema.define(version: 2021_01_15_114355) do
     t.index ["login"], name: "index_users_on_login", unique: true
   end
 
-  add_foreign_key "answers", "questions"
-  add_foreign_key "questions", "tests"
-  add_foreign_key "tests", "categories"
-  add_foreign_key "tests", "users", column: "creator_id"
+  add_foreign_key "answers", "questions", on_delete: :cascade
+  add_foreign_key "questions", "tests", on_delete: :cascade
+  add_foreign_key "tests", "categories", on_delete: :cascade
+  add_foreign_key "tests", "users", column: "creator_id", on_delete: :cascade
 end
