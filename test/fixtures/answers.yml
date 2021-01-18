@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  question: one
+  statement: MyString
+  is_correct: 
+
+two:
+  user: two
+  question: two
+  statement: MyString
+  is_correct: 
