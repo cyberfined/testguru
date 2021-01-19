@@ -1,19 +1,19 @@
-users = User.create([{ login: 'alice', password: '12345678' },
+users = User.create!([{ login: 'alice', password: '12345678' },
                      { login: 'bob', password: '87654321' }])
 
-categories = Category.create([{ title: 'math' }, { title: 'programming' }])
+categories = Category.create!([{ title: 'math' }, { title: 'programming' }])
 
-tests = Test.create([{ title: 'arithmetic', level: 0, category_id: categories.first.id, creator_id: users.first.id },
+tests = Test.create!([{ title: 'arithmetic', level: 0, category_id: categories.first.id, creator_id: users.first.id },
                      { title: 'x86_64 assembly', level: 3, category_id: categories.second.id, creator_id: users.second.id }])
 
-questions = Question.create([{ test_id: tests.first.id, statement: 'reduce 2 + 5' },
+questions = Question.create!([{ test_id: tests.first.id, statement: 'reduce 2 + 5' },
                              { test_id: tests.first.id, statement: 'reduce 2 * 5' },
                              { test_id: tests.first.id, statement: 'reduce 2 + 2 * 2' },
                              { test_id: tests.second.id, statement: 'what this instruction does: xorq %rax, %rax?' },
                              { test_id: tests.second.id, statement: 'are these instructions the same: movq %rax, %rdi and leaq (%rax), %rdi?' },
                              { test_id: tests.second.id, statement: 'what this instruction does: cld?' }])
 
-answers = Answer.create([{ question_id: questions[0].id, statement: '7', correct: true },
+answers = Answer.create!([{ question_id: questions[0].id, statement: '7', correct: true },
                          { question_id: questions[0].id, statement: '8', correct: false },
                          { question_id: questions[1].id, statement: '7', correct: false },
                          { question_id: questions[1].id, statement: '10', correct: true },
@@ -26,7 +26,7 @@ answers = Answer.create([{ question_id: questions[0].id, statement: '7', correct
                          { question_id: questions[5].id, statement: 'clear direction flag', correct: true },
                          { question_id: questions[5].id, statement: 'reboot a computer', correct: false }])
 
-UserAnswerMapping.create([{ user_id: users.first.id, answer_id: answers[6].id },
+UserAnswerMapping.create!([{ user_id: users.first.id, answer_id: answers[6].id },
                           { user_id: users.first.id, answer_id: answers[9].id },
                           { user_id: users.first.id, answer_id: answers[11].id },
                           { user_id: users.second.id, answer_id: answers[0].id },
