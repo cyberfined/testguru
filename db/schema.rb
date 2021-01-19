@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_18_114133) do
+ActiveRecord::Schema.define(version: 2021_01_15_114355) do
 
   create_table "answers", force: :cascade do |t|
     t.integer "question_id", null: false
@@ -47,15 +47,6 @@ ActiveRecord::Schema.define(version: 2021_01_18_114133) do
     t.index ["creator_id"], name: "index_tests_on_creator_id"
   end
 
-  create_table "user_answer_mappings", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "answer_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["answer_id"], name: "index_user_answer_mappings_on_answer_id"
-    t.index ["user_id"], name: "index_user_answer_mappings_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "login", limit: 30, null: false
     t.string "password_digest", null: false
@@ -68,6 +59,4 @@ ActiveRecord::Schema.define(version: 2021_01_18_114133) do
   add_foreign_key "questions", "tests", on_delete: :cascade
   add_foreign_key "tests", "categories", on_delete: :cascade
   add_foreign_key "tests", "users", column: "creator_id", on_delete: :cascade
-  add_foreign_key "user_answer_mappings", "answers", on_delete: :cascade
-  add_foreign_key "user_answer_mappings", "users", on_delete: :cascade
 end
