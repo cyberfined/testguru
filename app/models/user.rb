@@ -4,7 +4,11 @@ class User < ApplicationRecord
   has_secure_password
 
   def passed_tests_by_level(level)
-    questions = Question.find(answers.map(&:question_id))
-    Test.where(id: questions.map(&:test_id), level: level)
+    Test.joins('INNER JOIN questions AS Q ON Q.test_id = tests.id').
+      joins('INNER JOIN answers AS A ON A.question_id = Q.id').
+      joins('INNER JOIN user_answer_mappings AS M ON M.answer_id = A.id').
+      where('M.user_id = ? AND tests.level = ?', id, level).
+      distinct.
+      pluck(:title)
   end
 end
