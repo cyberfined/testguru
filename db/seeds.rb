@@ -26,9 +26,5 @@ answers = Answer.create!([{ question_id: questions[0].id, statement: '7', correc
                          { question_id: questions[5].id, statement: 'clear direction flag', correct: true },
                          { question_id: questions[5].id, statement: 'reboot a computer', correct: false }])
 
-UserAnswerMapping.create!([{ user_id: users.first.id, answer_id: answers[6].id },
-                          { user_id: users.first.id, answer_id: answers[9].id },
-                          { user_id: users.first.id, answer_id: answers[11].id },
-                          { user_id: users.second.id, answer_id: answers[0].id },
-                          { user_id: users.second.id, answer_id: answers[3].id },
-                          { user_id: users.second.id, answer_id: answers[5].id }])
+Result.create!([{ user_id: users.first.id, test_id: tests.second.id, points: 2 },
+                { user_id: users.second.id, test_id: tests.first.id, points: 3 }])
