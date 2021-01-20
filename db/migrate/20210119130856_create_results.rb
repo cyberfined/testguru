@@ -4,6 +4,7 @@ class CreateResults < ActiveRecord::Migration[6.1]
       t.references :user, null: false, foreign_key: true
       t.references :test, null: false, foreign_key: true
       t.integer :points, null: false
+      t.index [:user_id, :test_id], unique: true
 
       t.timestamps
     end
