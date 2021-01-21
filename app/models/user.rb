@@ -1,8 +1,8 @@
 class User < ApplicationRecord
   has_secure_password
-  has_many :results
+  has_many :results, dependent: :delete_all
   has_many :tests, through: :results
-  has_many :created_tests, class_name: 'Test', foreign_key: 'creator_id'
+  has_many :created_tests, class_name: 'Test', foreign_key: 'creator_id', dependent: :destroy
 
   def passed_tests_by_level(level)
     Test.joins('INNER JOIN results ON results.test_id = tests.id').
