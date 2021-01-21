@@ -8,35 +8,35 @@ if Category.first.nil?
 end
 
 if Test.first.nil?
-  tests = Test.create!([{ title: 'arithmetic', level: 0, category_id: categories.first.id, creator_id: users.first.id },
-                        { title: 'x86_64 assembly', level: 3, category_id: categories.second.id, creator_id: users.second.id }])
+  tests = Test.create!([{ title: 'arithmetic', level: 0, category: categories.first, creator: users.first},
+                        { title: 'x86_64 assembly', level: 3, category: categories.second, creator: users.second }])
 end
 
 if Question.first.nil?
-  questions = Question.create!([{ test_id: tests.first.id, statement: 'reduce 2 + 5' },
-                                { test_id: tests.first.id, statement: 'reduce 2 * 5' },
-                                { test_id: tests.first.id, statement: 'reduce 2 + 2 * 2' },
-                                { test_id: tests.second.id, statement: 'what this instruction does: xorq %rax, %rax?' },
-                                { test_id: tests.second.id, statement: 'are these instructions the same: movq %rax, %rdi and leaq (%rax), %rdi?' },
-                                { test_id: tests.second.id, statement: 'what this instruction does: cld?' }])
+  questions = Question.create!([{ test: tests.first, statement: 'reduce 2 + 5' },
+                                { test: tests.first, statement: 'reduce 2 * 5' },
+                                { test: tests.first, statement: 'reduce 2 + 2 * 2' },
+                                { test: tests.second, statement: 'what this instruction does: xorq %rax, %rax?' },
+                                { test: tests.second, statement: 'are these instructions the same: movq %rax, %rdi and leaq (%rax), %rdi?' },
+                                { test: tests.second, statement: 'what this instruction does: cld?' }])
 end
 
 if Answer.first.nil?
-  answers = Answer.create!([{ question_id: questions[0].id, statement: '7', correct: true },
-                            { question_id: questions[0].id, statement: '8', correct: false },
-                            { question_id: questions[1].id, statement: '7', correct: false },
-                            { question_id: questions[1].id, statement: '10', correct: true },
-                            { question_id: questions[2].id, statement: '8', correct: false },
-                            { question_id: questions[2].id, statement: '6', correct: true },
-                            { question_id: questions[3].id, statement: 'set rax to zero', correct: true },
-                            { question_id: questions[3].id, statement: 'add rax to itself', correct: false },
-                            { question_id: questions[4].id, statement: 'no, they don\'t', correct: false },
-                            { question_id: questions[4].id, statement: 'yes, they are', correct: true },
-                            { question_id: questions[5].id, statement: 'clear direction flag', correct: true },
-                            { question_id: questions[5].id, statement: 'reboot a computer', correct: false }])
+  answers = Answer.create!([{ question: questions[0], statement: '7', correct: true },
+                            { question: questions[0], statement: '8', correct: false },
+                            { question: questions[1], statement: '7', correct: false },
+                            { question: questions[1], statement: '10', correct: true },
+                            { question: questions[2], statement: '8', correct: false },
+                            { question: questions[2], statement: '6', correct: true },
+                            { question: questions[3], statement: 'set rax to zero', correct: true },
+                            { question: questions[3], statement: 'add rax to itself', correct: false },
+                            { question: questions[4], statement: 'no, they don\'t', correct: false },
+                            { question: questions[4], statement: 'yes, they are', correct: true },
+                            { question: questions[5], statement: 'clear direction flag', correct: true },
+                            { question: questions[5], statement: 'reboot a computer', correct: false }])
 end
 
 if Result.first.nil?
-  Result.create!([{ user_id: users.first.id, test_id: tests.second.id, points: 2 },
-                  { user_id: users.second.id, test_id: tests.first.id, points: 3 }])
+  Result.create!([{ user: users.first, test: tests.second, points: 2 },
+                  { user: users.second, test: tests.first, points: 3 }])
 end
