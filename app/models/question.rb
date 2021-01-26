@@ -9,7 +9,7 @@ class Question < ApplicationRecord
   private
 
   def validate_num_answers
-    if answers.length < 1 || answers.length > 4
+    unless answers.count.between?(1, 4)
       errors.add(:answers, 'number must be greater than or equal to 1 and less than or equal to 4')
     end
   end
