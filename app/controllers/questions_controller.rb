@@ -12,7 +12,12 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    Question.create!(test: @test, statement: params[:statement])
+    question = @test.questions.build(question_params)
+    if question.save
+      redirect_to "/tests/#{@test.id}/questions"
+    else
+      redirect_to :new_test_question
+    end
   end
 
   def show
@@ -35,5 +40,9 @@ class QuestionsController < ApplicationController
 
   def rescue_with_record_not_found(exception)
     render(plain: exception.message)
+  end
+
+  def question_params
+    params.require(:question).permit(:statement)
   end
 end
