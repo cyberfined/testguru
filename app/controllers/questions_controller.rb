@@ -14,7 +14,7 @@ class QuestionsController < ApplicationController
   def create
     question = @test.questions.build(question_params)
     if question.save
-      redirect_to "/tests/#{@test.id}/questions"
+      redirect_to :test_questions
     else
       redirect_to :new_test_question
     end
