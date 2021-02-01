@@ -5,7 +5,7 @@ class QuestionsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_record_not_found
 
   def index
-    render(plain: @test.questions.map(&:statement).join("\n"))
+    render plain: @test.questions.map(&:statement).join("\n")
   end
 
   def new
@@ -16,12 +16,12 @@ class QuestionsController < ApplicationController
     if question.save
       redirect_to :test_questions
     else
-      redirect_to :new_test_question
+      render :new
     end
   end
 
   def show
-    render(plain: @question.statement)
+    render plain: @question.statement
   end
 
   def destroy
@@ -39,7 +39,7 @@ class QuestionsController < ApplicationController
   end
 
   def rescue_with_record_not_found(exception)
-    render(plain: exception.message)
+    render plain: exception.message
   end
 
   def question_params
