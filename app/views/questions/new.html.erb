@@ -1,6 +1,1 @@
-<h1>Create new question for test <%= @test.title %></h1>
-<form action="/tests/<%= @test.id %>/questions" method="post">
-  <label>Statement</label><input type="text" name="question[statement]" required/><br>
-  <input type="submit" value="ok"/>
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"/>
-</form>
+<%= render partial: 'form', locals: { model: [@test, @question] } %>

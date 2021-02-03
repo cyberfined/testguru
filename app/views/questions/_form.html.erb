@@ -1,0 +1,9 @@
+<%= question_header(action_name, @test.title) %>
+<%= render partial: 'shared/errors', locals: { resource: @question } %>
+<%= form_with model: model do |form| %>
+  <p><%= form.label :statement, "Statement" %>
+  <%= form.text_field :statement %></p>
+  <p><%= form.submit %></p>
+<% end %>
+<%= link_to('back', test_questions_path(@test)) %>
+<%= render 'shared/footer' %>
