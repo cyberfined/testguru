@@ -1,0 +1,6 @@
+<% if resource.errors.present? %>
+  <h2><%= pluralize(resource.errors.count, "error") %></h2>
+  <% resource.errors.each do |error| %>
+    <p><%= error.full_message %></p>
+  <% end %>
+<% end %>
