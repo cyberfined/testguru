@@ -6,6 +6,13 @@ function reload() {
     window.location.reload(true);
 }
 
+function getAuthToken() {
+    meta = document.querySelector("meta[name=csrf-token]");
+    if(meta === undefined)
+        return "";
+    return meta.content;
+}
+
 function prepareLinks() {
     links = document.getElementsByTagName("a");
     for(i = 0; i < links.length; i++) {
@@ -40,5 +47,5 @@ function makeRequest(url, method, confirmMessage) {
 
     xhr.open(method, url, true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.send('authenticity_token=' + AUTH_TOKEN);
+    xhr.send('authenticity_token=' + getAuthToken());
 }
