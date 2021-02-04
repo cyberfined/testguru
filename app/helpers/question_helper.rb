@@ -1,9 +1,9 @@
 module QuestionHelper
-  def question_header(action, test_title)
-    header = if action == 'new'
-               "Create new #{test_title} question"
+  def question_header(question)
+    header = if question.persisted?
+               "Edit #{question.test.title} question"
              else
-               "Edit #{test_title} question"
+               "Create new #{question.test.title} question"
              end
     content_tag(:h1, header)
   end

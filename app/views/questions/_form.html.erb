@@ -1,4 +1,4 @@
-<%= question_header(action_name, @test.title) %>
+<%= question_header(@question) %>
 <%= render partial: 'shared/errors', locals: { resource: @question } %>
 <%= form_with model: model do |form| %>
   <p><%= form.label :statement, "Statement" %>
