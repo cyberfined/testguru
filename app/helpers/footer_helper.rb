@@ -4,6 +4,6 @@ module FooterHelper
   end
 
   def current_year
-    Time.zone.now.year
+    Time.current.year
   end
 end
