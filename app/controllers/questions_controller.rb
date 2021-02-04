@@ -32,7 +32,6 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    render plain: @question.statement
   end
 
   def destroy
