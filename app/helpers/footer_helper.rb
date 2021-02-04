@@ -1,9 +1,9 @@
 module FooterHelper
   def github_url(author, repo)
-    link_to(repo, "https://github.com/#{author}/#{repo}")
+    link_to(repo, "https://github.com/#{author}/#{repo}", rel: 'nofollow', target: '_blank')
   end
 
   def current_year
-    Date.today.year
+    Time.zone.now.year
   end
 end
