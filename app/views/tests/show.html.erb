@@ -7,6 +7,11 @@
     <td colspan="2"><%= @test.title %></td>
   </tr>
   <tr>
+    <td>Creator</td>
+    <td colspan="2"><%= @test.creator.login %></td>
+  </tr>
+  <tr>
+  <tr>
     <td>Level</td>
     <td colspan="2"><%= @test.level %></td>
   </tr>
@@ -17,6 +22,10 @@
  <tr>
    <td colspan="3"><%= link_to('new question', new_test_question_path(@test)) %></td>
  </tr>
+ <tr>
+   <td colspan="3"><%= link_to('edit', edit_test_path(@test)) %></td>
+ </tr>
+ <tr>
  <tr>
    <td colspan="3"><%= link_to('back', tests_path) %></td>
  </tr>

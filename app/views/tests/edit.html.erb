@@ -1,0 +1,4 @@
+<h1>Edit <%= @test.title %> test</h1>
+<%= render partial: 'shared/errors', locals: { resource: @test } %>
+<%= render 'form' %>
+<%= link_to('back', :tests) %>
