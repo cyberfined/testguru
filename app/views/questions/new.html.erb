@@ -3,4 +3,4 @@
 <%= form_with model: [@test, @question] do |form| %>
 <%= render partial: 'form_fields', locals: { form: form } %>
 <% end %>
-<%= link_to('back', test_questions_path(@test)) %>
+<%= link_to('back', @test) %>
