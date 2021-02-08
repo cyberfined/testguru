@@ -1,0 +1,11 @@
+<%= form_with model: @test do |form| %>
+  <p><%= form.label :title, "Title" %>
+  <%= form.text_field :title %></p>
+  <p><%= form.label :level, "Level" %>
+  <%= form.number_field :level, in: 0..Float::INFINITY %></p>
+  <p><%= form.label :category_id, "Category" %>
+  <%= form.collection_select :category_id, Category.all, :id, :title, prompt: true %></p>
+  <p><%= form.label :creator_id, "Creator" %>
+  <%= form.collection_select :creator_id, User.all, :id, :login, prompt: true %></p>
+  <p><%= form.submit %></p>
+<% end %>

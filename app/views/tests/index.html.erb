@@ -3,6 +3,8 @@
   <tr>
     <th>Title</th>
     <th>Number of questions</th>
+    <th colspan="2">Actions</th>
   </tr>
   <%= render @tests %>
+  <tr><td colspan="4"><%= link_to('new test', :new_test) %></td></tr>
 </table>
