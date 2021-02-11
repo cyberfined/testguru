@@ -4,7 +4,7 @@
     <th colspan="2">Question</th>
   </tr>
   <tr>
-    <td colspan="2"><%= @test.title %></td>
+    <td colspan="2"><%= @question.test.title %></td>
     <td colspan="2"><%= @question.statement %></td>
   </tr>
   <tr>
@@ -15,6 +15,6 @@
     <td colspan="4"><%= link_to('new answer', new_question_answer_path(@question)) %></td>
   </tr>
   <tr>
-    <td colspan="4"><%= link_to('back', @test) %></td>
+    <td colspan="4"><%= link_to('back', @question.test) %></td>
   </tr>
 </table>

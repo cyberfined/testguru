@@ -1,6 +1,4 @@
 <%= question_header(@question) %>
 <%= render partial: 'shared/errors', locals: { resource: @question } %>
-<%= form_with model: [@test, @question] do |form| %>
-<%= render partial: 'form_fields', locals: { form: form } %>
-<% end %>
+<%= render 'form' %>
 <%= link_to('back', @test) %>
