@@ -1,6 +1,7 @@
 <tr>
   <td><%= link_to(test.title, test) %></td>
   <td><%= test.questions.count %></td>
+  <td><%= button_to('start passage', start_test_path(test)) %></td>
   <td><%= link_to('edit', edit_test_path(test)) %></td>
   <td><%= link_to('delete', test, data: { confirm: 'Are you sure?' }, method: :delete) %></td>
 </tr>

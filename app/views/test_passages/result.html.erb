@@ -1,0 +1,18 @@
+<h1>Results for passage of <%= @test_passage.test.title %> test</h1>
+<table>
+  <tr>
+    <th>User</th>
+    <th>Completed</th>
+    <th>Points</th>
+    <th>Successful</th>
+  </tr>
+  <tr>
+    <td><%= @test_passage.user.login %></td>
+    <td><%= @test_passage.completed? ? 'yes' : 'no' %></td>
+    <td><%= "#{@test_passage.points} / #{@test_passage.num_questions}" %></td>
+    <td><%= passage_result_message(@test_passage) %></td>
+  </tr>
+  <tr>
+    <td colspan="4"><%= link_to('back', tests_path) %></td>
+  </tr>
+</table>
