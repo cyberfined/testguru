@@ -1,13 +1,20 @@
 <table>
   <tr>
-    <th>Test</th>
-    <th>Question</th>
+    <th colspan="2">Test</th>
+    <th colspan="2">Question</th>
   </tr>
   <tr>
-    <td><%= @test.title %></td>
-    <td><%= @question.statement %></td>
+    <td colspan="2"><%= @test.title %></td>
+    <td colspan="2"><%= @question.statement %></td>
   </tr>
   <tr>
-    <td colspan="2"><%= link_to('back', @test) %></td>
+    <th colspan="4">Answers</th>
+  </tr>
+  <%= render @question.answers %>
+  <tr>
+    <td colspan="4"><%= link_to('new answer', new_question_answer_path(@question)) %></td>
+  </tr>
+  <tr>
+    <td colspan="4"><%= link_to('back', @test) %></td>
   </tr>
 </table>
