@@ -1,4 +1,6 @@
 class TestPassage < ApplicationRecord
+  MINIMUM_PROGRESS = 0.85
+
   belongs_to :user
   belongs_to :test
   belongs_to :current_question, class_name: 'Question', optional: true
@@ -11,8 +13,7 @@ class TestPassage < ApplicationRecord
   end
 
   def successful?
-    return false unless completed?
-    points / num_questions >= 0.85
+    completed? and points / num_questions >= MINIMUM_PROGRESS
   end
 
   def submit_answer!(answer_ids)
