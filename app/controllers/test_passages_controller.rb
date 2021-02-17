@@ -10,8 +10,7 @@ class TestPassagesController < ApplicationController
   end
 
   def update
-    answers = params[:answer_ids].kind_of?(Array) ? params[:answer_ids] : []
-    @test_passage.submit_answer!(answers)
+    @test_passage.submit_answer!(params[:answer_ids])
     if @test_passage.completed?
       redirect_to result_test_passage_path(@test_passage)
     else

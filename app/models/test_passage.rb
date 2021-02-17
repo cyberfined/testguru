@@ -39,6 +39,7 @@ class TestPassage < ApplicationRecord
   end
 
   def correct_answer?(answer_ids)
+    return false unless answer_ids.kind_of?(Array)
     current_question.answers.correct.ids.sort == answer_ids.map(&:to_i).sort
   end
 
