@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :tests do
     member do
-      post :start
+      get :start
     end
 
     resources :questions, except: :index, shallow: true do
