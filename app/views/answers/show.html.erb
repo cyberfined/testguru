@@ -1,0 +1,18 @@
+<table>
+  <tr>
+    <th>Question</th>
+    <th>Answer</th>
+    <th>Correct</th>
+  </tr>
+  <tr>
+    <td><%= @answer.question.statement %></td>
+    <td><%= @answer.statement %></td>
+    <td><%= @answer.correct ? 'yes' : 'no' %></td>
+  </tr>
+  <tr>
+    <td colspan="2"><%= link_to('edit', edit_answer_path(@answer)) %></td>
+  <tr>
+  <tr>
+    <td colspan="2"><%= link_to('back', @answer.question) %></td>
+  <tr>
+</table>

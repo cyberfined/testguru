@@ -1,3 +1,5 @@
+<%= form_with model: [@test, @question] do |form| %>
 <p><%= form.label :statement, "Statement" %>
 <%= form.text_field :statement %></p>
 <p><%= form.submit %></p>
+<% end %>

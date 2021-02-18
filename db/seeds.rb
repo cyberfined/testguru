@@ -27,6 +27,4 @@ unless User.exists?
                             { question: questions[5], statement: 'clear direction flag', correct: true },
                             { question: questions[5], statement: 'reboot a computer', correct: false }])
 
-  Result.create!([{ user: users.first, test: tests.second, points: 2 },
-                  { user: users.second, test: tests.first, points: 3 }])
 end
