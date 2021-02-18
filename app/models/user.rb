@@ -5,9 +5,12 @@ class User < ApplicationRecord
   has_many :tests, through: :test_passages
   has_many :created_tests, class_name: 'Test', foreign_key: 'creator_id', dependent: :destroy
 
-  validates :login, presence: true
+  validates :login, length: { minimum: 3 }
+  validates :login, uniqueness: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
-  validates :password, presence: true
+  validates :email, uniqueness: true
+  validates :password, length: { minimum: 8 }
+  validates :password, confirmation: true
 
   def passed_tests_by_level(level)
     tests.where(level: level).pluck(:title)

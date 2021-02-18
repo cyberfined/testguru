@@ -14,4 +14,7 @@ Rails.application.routes.draw do
       get :result
     end
   end
+
+  get '/signup', to: 'users#new'
+  resources :users, only: :create
 end
