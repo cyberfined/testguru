@@ -1,6 +1,6 @@
 unless User.exists?
-  users = User.create!([{ login: 'alice', password: '12345678' },
-                        { login: 'bob', password: '87654321' }])
+  users = User.create!([{ login: 'alice', email: 'alice@example.com', password: '12345678' },
+                        { login: 'bob', email: 'bob@example.com', password: '87654321' }])
 
   categories = Category.create!([{ title: 'math' }, { title: 'programming' }])
 

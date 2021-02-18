@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :created_tests, class_name: 'Test', foreign_key: 'creator_id', dependent: :destroy
 
   validates :login, presence: true
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :password, presence: true
 
   def passed_tests_by_level(level)
