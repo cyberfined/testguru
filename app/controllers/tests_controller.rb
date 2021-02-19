@@ -1,5 +1,5 @@
 class TestsController < ApplicationController
-  before_action :check_logged_in, except: %i[index show]
+  before_action :authenticate_user!, except: %i[index show]
   before_action :find_test, only: %i[edit show update destroy start]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_record_not_found

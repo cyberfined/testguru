@@ -1,5 +1,5 @@
 class AnswersController < ApplicationController
-  before_action :check_logged_in, except: :show
+  before_action :authenticate_user!, except: :show
   before_action :find_answer, only: %i[edit show update destroy]
   before_action :find_question, only: %i[create new]
 
