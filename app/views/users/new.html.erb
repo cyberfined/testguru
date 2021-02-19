@@ -1,0 +1,29 @@
+<h1>Signup</h1>
+
+<%= render partial: 'shared/errors', locals: { resource: @user } %>
+
+<%= form_with model: @user do |form| %>
+  <table>
+    <tr>
+      <td><%= form.label :login, 'Login' %></td>
+      <td><%= form.text_field :login %></td>
+    </tr>
+    <tr>
+      <td><%= form.label :email, 'Email' %></td>
+      <td><%= form.email_field :email %></td>
+    </tr>
+    <tr>
+      <td><%= form.label :password, 'Password' %></td>
+      <td><%= form.password_field :password %></p></td>
+    </tr>
+    <tr>
+      <td><%= form.label :password_confirmation, 'Confirm password' %></td>
+      <td><%= form.password_field :password_confirmation %></p></td>
+    </tr>
+    <tr>
+      <td colspan="2"><%= form.submit 'Signup' %></td>
+    </tr>
+  </table>
+<% end %>
+
+<p><%= link_to('Signin', signin_path) %></p>

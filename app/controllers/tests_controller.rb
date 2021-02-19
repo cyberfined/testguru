@@ -1,6 +1,6 @@
 class TestsController < ApplicationController
+  before_action :authenticate_user!, except: %i[index show]
   before_action :find_test, only: %i[edit show update destroy start]
-  before_action :set_user, only: :start
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_record_not_found
 
@@ -41,7 +41,7 @@ class TestsController < ApplicationController
   end
 
   def start
-    passage = @user.test_passage(@test) || @user.test_passages.create(test: @test)
+    passage = current_user.test_passage(@test) || current_user.test_passages.create(test: @test)
     redirect_to passage
   end
 
@@ -53,10 +53,6 @@ class TestsController < ApplicationController
 
   def find_test
     @test = Test.find(params[:id])
-  end
-
-  def set_user
-    @user = User.first
   end
 
   def rescue_with_record_not_found(exception)

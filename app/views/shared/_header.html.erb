@@ -1,0 +1,9 @@
+<header>
+  <% if logged_in? %>
+    <%= link_to("Welcome, #{current_user.login} Guru", tests_path) %>
+    <%= link_to('Signout', signout_path, method: :delete) %>
+  <% else %>
+    <%= link_to('Signin', signin_path) %>
+    <%= link_to('Signup', signup_path) %>
+  <% end %>
+</header>
