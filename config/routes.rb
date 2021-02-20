@@ -5,19 +5,27 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  resources :tests do
+  resources :answers, only: :show
+
+  resources :questions, only: :show
+
+  resources :tests, only: %i[index show] do
     member do
       get :start
-    end
-
-    resources :questions, except: :index, shallow: true do
-      resources :answers, except: :index, shallow: true
     end
   end
 
   resources :test_passages, only: %i[show update] do
     member do
       get :result
+    end
+  end
+
+  namespace :admin do
+    resources :tests do
+      resources :questions, except: :index, shallow: true do
+        resources :answers, except: :index, shallow: true
+      end
     end
   end
 end

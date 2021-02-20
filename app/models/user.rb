@@ -20,6 +20,10 @@ class User < ApplicationRecord
     "#{first_name} #{last_name} #{email}"
   end
 
+  def admin?
+    is_a?(Admin)
+  end
+
   def passed_tests_by_level(level)
     tests.where(level: level).pluck(:title)
   end

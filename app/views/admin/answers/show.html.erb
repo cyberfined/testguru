@@ -10,6 +10,9 @@
     <td><%= @answer.correct ? 'yes' : 'no' %></td>
   </tr>
   <tr>
-    <td colspan="2"><%= link_to('back', @answer.question) %></td>
+    <td colspan="2"><%= link_to('edit', edit_admin_answer_path(@answer)) %></td>
+  <tr>
+  <tr>
+    <td colspan="2"><%= link_to('back', admin_question_path(@answer.question)) %></td>
   <tr>
 </table>

@@ -1,5 +1,5 @@
-<h1>New answer</h1>
+<h1>Edit answer</h1>
 <%= render partial: 'shared/errors', locals: { resource: @answer } %>
 <p>Question: <%= @answer.question.statement %></p>
 <%= render 'form' %>
-<%= link_to('back', @answer.question) %>
+<%= link_to('back', admin_question_path(@answer.question)) %>
