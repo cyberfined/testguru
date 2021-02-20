@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 2021_02_20_073324) do
     t.string "first_name", limit: 30, null: false
     t.string "last_name", limit: 30, null: false
     t.string "email", limit: 30, null: false
+    t.string "type", default: "User", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "encrypted_password", default: "", null: false
