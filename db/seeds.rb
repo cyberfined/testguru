@@ -1,6 +1,6 @@
 unless User.exists?
-  users = [{ login: 'alice', email: 'alice@example.com', password: '12345678' },
-           { login: 'bob', email: 'bob@example.com', password: '87654321' }]
+  users = [{ first_name: 'alice', last_name: 'hacker', email: 'alice@example.com', password: '12345678' },
+           { first_name: 'ben', last_name: 'bitdiddle', email: 'ben@example.com', password: '87654321' }]
   users.map! { |u| User.new(u) }
   users.each do |u|
     u.skip_confirmation!
