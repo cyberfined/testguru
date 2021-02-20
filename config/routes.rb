@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  root to: 'tests#index'
+
+  devise_for :users
+
   resources :tests do
     member do
       get :start
@@ -14,11 +18,4 @@ Rails.application.routes.draw do
       get :result
     end
   end
-
-  get '/signup', to: 'users#new'
-  resources :users, only: :create
-
-  get '/signin', to: 'sessions#new'
-  post '/signin', to: 'sessions#create'
-  delete '/signout', to: 'sessions#destroy'
 end

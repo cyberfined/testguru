@@ -1,6 +1,11 @@
 unless User.exists?
-  users = User.create!([{ login: 'alice', email: 'alice@example.com', password: '12345678' },
-                        { login: 'bob', email: 'bob@example.com', password: '87654321' }])
+  users = [{ login: 'alice', email: 'alice@example.com', password: '12345678' },
+           { login: 'bob', email: 'bob@example.com', password: '87654321' }]
+  users.map! { |u| User.new(u) }
+  users.each do |u|
+    u.skip_confirmation!
+    u.save!
+  end
 
   categories = Category.create!([{ title: 'math' }, { title: 'programming' }])
 
