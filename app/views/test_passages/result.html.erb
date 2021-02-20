@@ -7,7 +7,7 @@
     <th>Successful</th>
   </tr>
   <tr>
-    <td><%= @test_passage.user.login %></td>
+    <td><%= @test_passage.user.show_initials %></td>
     <td><%= @test_passage.completed? ? 'yes' : 'no' %></td>
     <td><%= "#{@test_passage.points} / #{@test_passage.num_questions}" %></td>
     <td><%= passage_result_message(@test_passage) %></td>

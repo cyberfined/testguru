@@ -1,6 +1,4 @@
 <tr>
   <td><%= link_to(answer.statement, answer) %></td>
   <td><%= answer.correct ? 'correct' : 'incorrect' %></td>
-  <td><%= link_to('edit', edit_answer_path(answer)) %></td>
-  <td><%= link_to('delete', answer, data: { confirm: 'Are you sure?' }, method: :delete) %></td>
 </tr>

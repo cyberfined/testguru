@@ -1,5 +1,3 @@
 <tr>
-  <td><%= link_to(question.statement, question) %></td>
-  <td><%= link_to('edit', edit_question_path(question)) %></td>
-  <td><%= link_to('delete', question, data: { confirm: 'Are you sure?' }, method: :delete) %></td>
+  <td colspan="2"><%= link_to(question.statement, question) %></td>
 </tr>

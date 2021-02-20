@@ -1,11 +1,23 @@
+def create_users!(users, constructor)
+  users.map! { |u| constructor.call(u) }
+  users.each do |u|
+    u.skip_confirmation!
+    u.save!
+  end
+end
+
 unless User.exists?
-  users = User.create!([{ login: 'alice', email: 'alice@example.com', password: '12345678' },
-                        { login: 'bob', email: 'bob@example.com', password: '87654321' }])
+  admins = [{ first_name: 'alice', last_name: 'hacker', email: 'alice@example.com', password: '12345678' },
+            { first_name: 'ben', last_name: 'bitdiddle', email: 'ben@example.com', password: '87654321' }]
+  create_users!(admins, Admin.method(:new))
+
+  users = [{ first_name: 'john', last_name: 'xeta', email: 'xeta@example.com', password: '12345678' }]
+  create_users!(users, User.method(:new))
 
   categories = Category.create!([{ title: 'math' }, { title: 'programming' }])
 
-  tests = Test.create!([{ title: 'arithmetic', level: 0, category: categories.first, creator: users.first},
-                        { title: 'x86_64 assembly', level: 3, category: categories.second, creator: users.second }])
+  tests = Test.create!([{ title: 'arithmetic', level: 0, category: categories.first, creator: admins.first},
+                        { title: 'x86_64 assembly', level: 3, category: categories.second, creator: admins.second }])
 
   questions = Question.create!([{ test: tests.first, statement: 'reduce 2 + 5' },
                                 { test: tests.first, statement: 'reduce 2 * 5' },

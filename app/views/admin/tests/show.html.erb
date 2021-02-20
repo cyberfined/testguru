@@ -20,6 +20,12 @@
   </tr>
   <%= render @test.questions %>
   <tr>
-    <td colspan="3"><%= link_to('back', tests_path) %></td>
+    <td colspan="3"><%= link_to('new question', new_admin_test_question_path(@test)) %></td>
+  </tr>
+  <tr>
+    <td colspan="3"><%= link_to('edit', edit_admin_test_path(@test)) %></td>
+  </tr>
+  <tr>
+    <td colspan="3"><%= link_to('back', :admin_tests) %></td>
   </tr>
 </table>

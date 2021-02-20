@@ -1,0 +1,20 @@
+<table>
+  <tr>
+    <th colspan="2">Test</th>
+    <th colspan="2">Question</th>
+  </tr>
+  <tr>
+    <td colspan="2"><%= @question.test.title %></td>
+    <td colspan="2"><%= @question.statement %></td>
+  </tr>
+  <tr>
+    <th colspan="4">Answers</th>
+  </tr>
+  <%= render @question.answers %>
+  <tr>
+    <td colspan="4"><%= link_to('new answer', new_admin_question_answer_path(@question)) %></td>
+  </tr>
+  <tr>
+    <td colspan="4"><%= link_to('back', admin_test_path(@question.test)) %></td>
+  </tr>
+</table>
