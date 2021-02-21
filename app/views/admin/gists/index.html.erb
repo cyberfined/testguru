@@ -1,0 +1,12 @@
+<h1>All gists</h1>
+<table>
+  <tr>
+    <th>User</th>
+    <th>Question</th>
+    <th>Gist's URL</th>
+  </tr>
+  <%= render @gists %>
+  <tr>
+    <td colspan="3"><%= link_to('Back', :admin_tests) %></td>
+  </tr>
+</table>

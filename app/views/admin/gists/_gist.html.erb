@@ -1,0 +1,5 @@
+<tr>
+  <td><%= gist.user.email %></td>
+  <td><%= link_to(gist.question.statement[0..25], admin_question_path(gist.question)) %></td>
+  <td><%= link_to(gist.url, gist.url, rel: 'nofollow', target: '_blank') %></td>
+</tr>
