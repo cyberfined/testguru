@@ -10,4 +10,7 @@
   <% end %>
   <%= form.submit 'Next' %>
 <% end %>
-<p><%= link_to('Gist question', gist_test_passage_path(@test_passage), method: :post) %></p>
+<%= form_with model: Gist.new do |f| %>
+  <%= f.hidden_field :test_passage_id, value: @test_passage.id %>
+  <%= f.submit "Gist question" %>
+<% end %>
