@@ -1,2 +1,4 @@
 ru:
   question-gist-description: "Вопрос %{statement} с сайта TestGuru"
+  successful-gist-creation:  "Гист %{link} был успешно создан"
+  unsuccessful-gist-creation: "Не удалось создать гист"

@@ -31,3 +31,5 @@
 
 en:
   question-gist-description: "Question %{statement} from TestGuru"
+  successful-gist-creation:  "Gist %{link} was successfully created"
+  unsuccessful-gist-creation: "Не удалось создать гист"
