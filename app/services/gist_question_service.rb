@@ -1,9 +1,9 @@
 class GistQuestionService
+  GITHUB_ACCESS_TOKEN = Rails.application.credentials.aws[:github_access_token].freeze
+
   def initialize(question, client: nil)
-    token = Rails.application.credentials.aws[:github_access_token]
-    @client = client || Octokit::Client.new(access_token: token)
+    @client = client || Octokit::Client.new(access_token: GITHUB_ACCESS_TOKEN)
     @question = question
-    @test = @question.test
   end
 
   def call
@@ -11,7 +11,7 @@ class GistQuestionService
   end
 
   def success?
-    @client.last_response.status == 201
+    @client.last_response&.status == 201
   end
 
   private
