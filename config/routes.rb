@@ -21,11 +21,15 @@ Rails.application.routes.draw do
     end
   end
 
+  post '/gists/:test_passage_id', to: 'gists#create', as: 'gists'
+
   namespace :admin do
     resources :tests do
       resources :questions, except: :index, shallow: true do
         resources :answers, except: :index, shallow: true
       end
     end
+
+    resources :gists, only: :index
   end
 end
