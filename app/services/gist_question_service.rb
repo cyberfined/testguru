@@ -1,12 +1,3 @@
-class GistInfo
-  attr_reader :git_hash, :url
-
-  def initialize(git_hash, url)
-    @git_hash = git_hash
-    @url = url
-  end
-end
-
 class GistQuestionService
   GITHUB_ACCESS_TOKEN = Rails.application.credentials.aws[:github_access_token].freeze
 
@@ -17,7 +8,7 @@ class GistQuestionService
 
   def call
     client_gist_info = @client.create_gist(gist_params)
-    GistInfo.new(client_gist_info.id, client_gist_info.html_url)
+    Struct.new(:git_hash, :url).new(client_gist_info.id, client_gist_info.html_url)
   end
 
   def success?
