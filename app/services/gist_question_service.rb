@@ -1,5 +1,5 @@
 class GistQuestionService
-  GITHUB_ACCESS_TOKEN = Rails.application.credentials.aws[:github_access_token].freeze
+  GITHUB_ACCESS_TOKEN = Rails.application.credentials.aws[:github_access_token]
 
   GistInfo = Struct.new(:git_hash, :url)
 
@@ -27,8 +27,6 @@ class GistQuestionService
   end
 
   def question_content
-    content = [@question.statement]
-    content += @question.answers.pluck(:statement)
-    content.join("\n")
+    [@question.statement, *@question.answers.pluck(:statement)].join("\n")
   end
 end
