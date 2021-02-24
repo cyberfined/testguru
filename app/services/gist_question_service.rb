@@ -1,6 +1,8 @@
 class GistQuestionService
   GITHUB_ACCESS_TOKEN = Rails.application.credentials.aws[:github_access_token].freeze
 
+  GistInfo = Struct.new(:git_hash, :url)
+
   def initialize(question, client: nil)
     @client = client || Octokit::Client.new(access_token: GITHUB_ACCESS_TOKEN)
     @question = question
@@ -8,7 +10,7 @@ class GistQuestionService
 
   def call
     client_gist_info = @client.create_gist(gist_params)
-    Struct.new(:git_hash, :url).new(client_gist_info.id, client_gist_info.html_url)
+    GistInfo.new(client_gist_info.id, client_gist_info.html_url)
   end
 
   def success?
