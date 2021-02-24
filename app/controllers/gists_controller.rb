@@ -2,7 +2,7 @@ class GistsController < ApplicationController
   before_action :authenticate_user!, only: :create
 
   def create
-    test_passage = TestPassage.find(gist_params[:test_passage_id])
+    test_passage = TestPassage.find(params[:test_passage_id])
 
     gist_service = GistQuestionService.new(test_passage.current_question)
     gist_info = gist_service.call
@@ -16,11 +16,5 @@ class GistsController < ApplicationController
     end
 
     redirect_to test_passage, flash_params
-  end
-
-  private
-
-  def gist_params
-    params.require(:gist).permit(:test_passage_id)
   end
 end

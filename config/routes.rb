@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :gists, only: :create
+  post '/gists/:test_passage_id', to: 'gists#create', as: 'gists'
 
   namespace :admin do
     resources :tests do
