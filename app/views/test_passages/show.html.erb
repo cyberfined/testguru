@@ -10,4 +10,9 @@
   <% end %>
   <%= form.submit 'Next' %>
 <% end %>
+<%= content_tag :div, class: 'progress-bar',
+                      data: { max: @test_passage.num_questions,
+                              value: @test_passage.current_question_number } do %>
+  <div></div>
+<% end %>
 <%= link_to('Gist question', gists_path(test_passage_id: @test_passage.id), method: :post) %>
