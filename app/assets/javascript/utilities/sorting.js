@@ -1,9 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
-    headers = document.getElementsByClassName("sort-by-title");
-    for(i = 0; i < headers.length; i++) {
-        let header = headers[i];
+    Array.from(document.getElementsByClassName("js-sort-by-title")).forEach(header => {
         header.addEventListener("click", () => sortRowsByTitle(header));
-    }
+    });
 });
 
 function outerTable(element) {
@@ -16,35 +14,25 @@ function outerTable(element) {
 }
 
 function sortRowsByTitle(header) {
-    table = outerTable(header);
-    columnIndex = Array.from(header.parentNode.children).indexOf(header);
+    let table = outerTable(header);
+    let columnIndex = Array.from(header.parentNode.children).indexOf(header);
 
-    arrowUp = table.querySelector(".octicon-arrow-up");
-    arrowDown = table.querySelector(".octicon-arrow-down");
+    let arrowUp = table.querySelector(".octicon-arrow-up");
+    let arrowDown = table.querySelector(".octicon-arrow-down");
 
     let sortFunction;
     if(arrowUp.classList.contains("hide")) {
         arrowUp.classList.remove("hide");
         arrowDown.classList.add("hide");
-        sortFunction = (r1, r2) => compareRows(r1, r2, columnIndex, true);
+        sortFunction = (r1, r2) =>
+            r1.cells[columnIndex].innerHTML > r2.cells[columnIndex].innerHTML ? 1 : -1;
     } else {
         arrowUp.classList.add("hide");
         arrowDown.classList.remove("hide");
-        sortFunction = (r1, r2) => compareRows(r1, r2, columnIndex, false);
+        sortFunction = (r1, r2) =>
+            r2.cells[columnIndex].innerHTML > r1.cells[columnIndex].innerHTML ? 1 : -1;
     }
 
-    sortedRows = Array.from(table.getElementsByTagName("tr")).slice(1).sort(sortFunction);
-
-    sortedTable = document.createElement("table");
-    sortedTable.appendChild(header.parentNode);
-    sortedRows.forEach(e => sortedTable.appendChild(e));
-    table.parentNode.replaceChild(sortedTable, table);
-}
-
-function compareRows(r1, r2, index, isAscending) {
-    val1 = r1.children[index].textContent;
-    val2 = r2.children[index].textContent;
-    if(isAscending)
-        return val1 > val2 ? 1 : (val1 == val2 ? 0 : -1);
-    return val2 > val1 ? 1 : (val1 == val2 ? 0 : -1);
+    let sortedRows = Array.from(table.rows).slice(1).sort(sortFunction);
+    table.tBodies[0].append(...sortedRows);
 }
