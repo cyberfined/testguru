@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     const password = document.getElementById("user_password");
-    if(password === null)
-        return;
+    if(password === null) return;
 
     const confirmation = document.getElementById("user_password_confirmation");
     const successIcon = document.querySelector(".octicon-check-circle-fill");
