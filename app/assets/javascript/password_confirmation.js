@@ -1,20 +1,20 @@
 document.addEventListener("DOMContentLoaded", () => {
-    let password = document.getElementById("user_password");
+    const password = document.getElementById("user_password");
     if(password === null)
         return;
 
-    let confirmation = document.getElementById("user_password_confirmation");
-    let successIcon = document.querySelector(".octicon-check-circle-fill");
-    let failureIcon = document.querySelector(".octicon-x-circle-fill");
-    let checkFunction = () => checkPasswordConfirmation(password, confirmation, successIcon, failureIcon);
+    const confirmation = document.getElementById("user_password_confirmation");
+    const successIcon = document.querySelector(".octicon-check-circle-fill");
+    const failureIcon = document.querySelector(".octicon-x-circle-fill");
+    const checkFunction = () => checkPasswordConfirmation(password, confirmation, successIcon, failureIcon);
 
     password.addEventListener("input", checkFunction);
     confirmation.addEventListener("input", checkFunction);
 });
 
 function checkPasswordConfirmation(password, confirmation, successIcon, failureIcon) {
-    let passwordContent = password.value;
-    let confirmationContent = confirmation.value;
+    const passwordContent = password.value;
+    const confirmationContent = confirmation.value;
     if(confirmationContent.length == 0) {
         successIcon.classList.add("hide");
         failureIcon.classList.add("hide");

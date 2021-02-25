@@ -14,11 +14,11 @@ function outerTable(element) {
 }
 
 function sortRowsByTitle(header) {
-    let table = outerTable(header);
-    let columnIndex = Array.from(header.parentNode.children).indexOf(header);
+    const table = outerTable(header);
+    const columnIndex = Array.from(header.parentNode.children).indexOf(header);
 
-    let arrowUp = table.querySelector(".octicon-arrow-up");
-    let arrowDown = table.querySelector(".octicon-arrow-down");
+    const arrowUp = table.querySelector(".octicon-arrow-up");
+    const arrowDown = table.querySelector(".octicon-arrow-down");
 
     let sortFunction;
     if(arrowUp.classList.contains("hide")) {
@@ -33,6 +33,6 @@ function sortRowsByTitle(header) {
             r2.cells[columnIndex].innerHTML > r1.cells[columnIndex].innerHTML ? 1 : -1;
     }
 
-    let sortedRows = Array.from(table.rows).slice(1).sort(sortFunction);
+    const sortedRows = Array.from(table.rows).slice(1).sort(sortFunction);
     table.tBodies[0].append(...sortedRows);
 }
