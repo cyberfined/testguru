@@ -24,6 +24,8 @@
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= octicon "check-circle-fill", fill: "green", class: "hide" %>
+    <%= octicon "x-circle-fill", fill: "red", class: "hide" %>
   </div>
 
   <div class="field">
