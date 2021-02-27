@@ -31,6 +31,6 @@ class User < ApplicationRecord
 
   def test_passage(test)
     passage = test_passages.order(id: :desc).find_by(test_id: test.id)
-    return passage unless passage.nil? || passage.current_question.nil?
+    return passage unless passage.nil? || passage.completed?
   end
 end
