@@ -39,4 +39,8 @@ unless User.exists?
                             { question: questions[5], statement: 'clear direction flag', correct: true },
                             { question: questions[5], statement: 'reboot a computer', correct: false }])
 
+
+  rules = Rule.create!([{ title: 'first try' },
+                        { title: 'category passage' },
+                        { title: 'level passage' }])
 end
