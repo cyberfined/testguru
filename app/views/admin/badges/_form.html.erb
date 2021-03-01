@@ -1,0 +1,16 @@
+<%= form_with model: [:admin, @badge] do |form| %>
+  <p><%= form.label :title, 'Title' %>
+  <%= form.text_field :title %></p>
+  <p><%= form.label :image_url, 'Image URL' %>
+  <%= form.text_field :image_url %></p>
+  <p><%= form.label :rule_id, 'Rule' %>
+  <%= form.collection_select :rule_id, Rule.all, :id, :title %></p>
+  <p class="hide" id="select_test_id"><%= form.label :test_id, 'Test' %>
+  <%= select_tag('Test', options_from_collection_for_select(Test.all, :id, :title), id: 'badge_test_id') %></p>
+  <p class="hide" id="select_category_id"><%= form.label :category_id, 'Category' %>
+  <%= select_tag('Category', options_from_collection_for_select(Category.all, :id, :title), id: 'badge_category_id') %></p>
+  <p class="hide" id="select_level"><%= form.label :level, 'Level' %>
+  <%= number_field_tag('Level', 0, id: 'badge_level', min: 0) %></p>
+  <%= form.hidden_field :rule_argument %>
+  <%= form.submit %>
+<% end %>
