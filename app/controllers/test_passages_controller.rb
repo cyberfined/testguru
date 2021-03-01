@@ -8,9 +8,15 @@ class TestPassagesController < ApplicationController
   end
 
   def result
+    @test_passage.force_complete! unless @test_passage.completed?
   end
 
   def update
+    if @test_passage.time_over?
+      redirect_to result_test_passage_path(@test_passage)
+      return
+    end
+
     @test_passage.submit_answer!(params[:answer_ids])
     if @test_passage.completed?
       redirect_to result_test_passage_path(@test_passage)

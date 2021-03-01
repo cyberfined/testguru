@@ -16,7 +16,7 @@ unless User.exists?
 
   categories = Category.create!([{ title: 'math' }, { title: 'programming' }])
 
-  tests = Test.create!([{ title: 'arithmetic', level: 0, category: categories.first, creator: admins.first},
+  tests = Test.create!([{ title: 'arithmetic', level: 0, category: categories.first, creator: admins.first, timer: 2 },
                         { title: 'x86_64 assembly', level: 3, category: categories.second, creator: admins.second }])
 
   questions = Question.create!([{ test: tests.first, statement: 'reduce 2 + 5' },

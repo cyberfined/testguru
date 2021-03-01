@@ -6,10 +6,15 @@ class TestPassage < ApplicationRecord
   belongs_to :current_question, class_name: 'Question', optional: true
 
   before_validation :before_validation_set_first_question, on: :create
-  before_update :before_save_set_next_question
+  before_update :before_save_set_next_question, unless: :completed?
 
   def completed?
     current_question.nil?
+  end
+
+  def force_complete!
+    self.current_question = nil
+    save
   end
 
   def successful?
@@ -30,6 +35,15 @@ class TestPassage < ApplicationRecord
 
   def num_questions
     test.questions.count
+  end
+
+  def time_left
+    time_limit = test.timer || 0
+    time_limit * 60 - (Time.now - created_at).to_i
+  end
+
+  def time_over?
+    test.timer.present? && time_left <= 0
   end
 
   private
