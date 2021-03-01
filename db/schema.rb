@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_01_164507) do
+ActiveRecord::Schema.define(version: 2021_03_01_170708) do
 
   create_table "answers", force: :cascade do |t|
     t.integer "question_id", null: false
@@ -30,6 +30,11 @@ ActiveRecord::Schema.define(version: 2021_03_01_164507) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["rule_id"], name: "index_badges_on_rule_id"
     t.index ["title"], name: "index_badges_on_title", unique: true
+  end
+
+  create_table "badges_users", id: false, force: :cascade do |t|
+    t.integer "badge_id", null: false
+    t.integer "user_id", null: false
   end
 
   create_table "categories", force: :cascade do |t|
