@@ -9,6 +9,8 @@ class TestPassagesController < ApplicationController
 
   def result
     @test_passage.force_complete! unless @test_passage.completed?
+    badge_service = BadgeService.new(@test_passage)
+    badge_service.call
   end
 
   def update
