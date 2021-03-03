@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 
   post '/gists/:test_passage_id', to: 'gists#create', as: 'gists'
 
+  resources :badges, only: :index
+
   namespace :admin do
     resources :tests do
       patch :update_inline, on: :member
@@ -32,5 +34,7 @@ Rails.application.routes.draw do
     end
 
     resources :gists, only: :index
+
+    resources :badges
   end
 end

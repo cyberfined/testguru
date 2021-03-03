@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_21_083052) do
+ActiveRecord::Schema.define(version: 2021_03_01_170708) do
 
   create_table "answers", force: :cascade do |t|
     t.integer "question_id", null: false
@@ -19,6 +19,22 @@ ActiveRecord::Schema.define(version: 2021_02_21_083052) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["question_id"], name: "index_answers_on_question_id"
+  end
+
+  create_table "badges", force: :cascade do |t|
+    t.string "title", limit: 30, null: false
+    t.string "image_url", null: false
+    t.integer "rule_id", null: false
+    t.integer "rule_argument"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["rule_id"], name: "index_badges_on_rule_id"
+    t.index ["title"], name: "index_badges_on_title", unique: true
+  end
+
+  create_table "badges_users", id: false, force: :cascade do |t|
+    t.integer "badge_id", null: false
+    t.integer "user_id", null: false
   end
 
   create_table "categories", force: :cascade do |t|
@@ -45,6 +61,13 @@ ActiveRecord::Schema.define(version: 2021_02_21_083052) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["test_id"], name: "index_questions_on_test_id"
+  end
+
+  create_table "rules", force: :cascade do |t|
+    t.string "title", limit: 30, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["title"], name: "index_rules_on_title", unique: true
   end
 
   create_table "test_passages", force: :cascade do |t|
@@ -91,6 +114,7 @@ ActiveRecord::Schema.define(version: 2021_02_21_083052) do
   end
 
   add_foreign_key "answers", "questions"
+  add_foreign_key "badges", "rules"
   add_foreign_key "gists", "questions"
   add_foreign_key "gists", "users"
   add_foreign_key "questions", "tests"

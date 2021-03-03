@@ -39,4 +39,15 @@ unless User.exists?
                             { question: questions[5], statement: 'clear direction flag', correct: true },
                             { question: questions[5], statement: 'reboot a computer', correct: false }])
 
+
+  rules = Rule.create!([{ title: 'first try' },
+                        { title: 'category passage' },
+                        { title: 'level passage' }])
+
+  badges = Badge.create!([{ title: 'assembly hero', image_url: '/badge_01.png', rule: rules[0],
+                            rule_argument: tests.second.id },
+                          { title: 'third hero', image_url: '/badge_02.png', rule: rules[2],
+                            rule_argument: 3 },
+                          { title: 'math hero', image_url: '/badge_03.png', rule: rules[1],
+                            rule_argument: categories.first.id }])
 end

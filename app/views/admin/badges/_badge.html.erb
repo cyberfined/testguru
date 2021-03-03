@@ -1,0 +1,6 @@
+<div class="inline-block">
+  <p><%= content_tag :img, '', src: badge.image_url %></p>
+  <p><%= badge.title %></p>
+  <p><%= link_to('edit', edit_admin_badge_path(badge)) %>
+  <%= link_to('delete', admin_badge_path(badge), data: { confirm: 'Are you sure?' }, method: :delete) %></p>
+</div>
